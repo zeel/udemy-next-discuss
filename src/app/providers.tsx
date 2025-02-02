@@ -1,10 +1,16 @@
-"use client";
-import { HeroUIProvider } from "@heroui/react";
+'use client';
 
-interface IProvidersProps {
+import { NextUIProvider } from '@nextui-org/react';
+import { SessionProvider } from 'next-auth/react';
+
+interface ProvidersProps {
   children: React.ReactNode;
 }
 
-export default function Providers({ children }: IProvidersProps) {
-  return <HeroUIProvider>{children}</HeroUIProvider>;
+export default function Providers({ children }: ProvidersProps) {
+  return (
+    <SessionProvider>
+      <NextUIProvider>{children}</NextUIProvider>
+    </SessionProvider>
+  );
 }
